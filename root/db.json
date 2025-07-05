@@ -1,6 +1,6 @@
 {
   "users": [
-        {
+    {
       "id": "1",
       "username": "admin",
       "password": "admin123",
@@ -10,16 +10,26 @@
       "id": "2",
       "username": "dosen01",
       "password": "dosen123",
-      "role": "dosen"
+      "role": "dosen",
+      "nama": "M. Rizki Fadhilah",
+      "email": "m.rizki.fadhillah@teacher.uir.ac.id"
     },
     {
       "id": "3",
       "username": "20220001",
       "password": "mhs123",
-      "role": "mahasiswa"
+      "role": "mahasiswa",
+      "nama": "FERDINAND TOBING",
+      "email": "ferdinandtobing@student.uir.ac.id"
     }
   ],
   "mahasiswa": [
+    {
+      "id": "1",
+      "nama": "Ferdinand Tobing",
+      "nim": "233510397",
+      "jurusan": "Teknik Informatika"
+    },
     {
       "id": "2",
       "nama": "Budi",
