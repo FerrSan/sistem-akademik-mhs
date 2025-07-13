@@ -5,9 +5,6 @@
     <div class="mb-4">
       <h1 class="h3 mb-0">Dashboard Mahasiswa</h1>
       <p class="text-muted">Selamat datang, {{ mahasiswaData?.nama || 'Mahasiswa' }}</p>
-                <button @click="authStore.logout" class="btn btn-outline-danger btn-sm">
-      <i class="bi bi-box-arrow-right me-1"></i> Logout
-    </button>
     </div>
 
     <!-- Profile Overview -->

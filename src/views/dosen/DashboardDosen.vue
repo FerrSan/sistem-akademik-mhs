@@ -5,9 +5,6 @@
     <div class="mb-4">
       <h1 class="h3 mb-0">Dashboard Dosen</h1>
       <p class="text-muted">Selamat datang, {{ userName }}</p>
-                <button @click="authStore.logout" class="btn btn-outline-danger btn-sm">
-      <i class="bi bi-box-arrow-right me-1"></i> Logout
-    </button>
     </div>
 
     <!-- Statistics Cards -->
@@ -26,7 +23,6 @@
                 <h3 class="mb-0">{{ stats.totalMahasiswa }}</h3>
               </div>
             </div>
-            
           </div>
         </div>
       </div>
@@ -157,7 +153,11 @@
                 <i class="bi bi-people me-2"></i>
                 Lihat Semua Mahasiswa
               </router-link>
-              <button class="btn btn-outline-success text-start" @click="exportData">
+              <router-link to="/dosen/input-nilai" class="btn btn-outline-success text-start">
+                <i class="bi bi-pencil-square me-2"></i>
+                Input Nilai Mahasiswa
+              </router-link>
+              <button class="btn btn-outline-info text-start" @click="exportData">
                 <i class="bi bi-download me-2"></i>
                 Download Data Mahasiswa
               </button>

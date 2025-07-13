@@ -73,6 +73,15 @@
               Profil
             </router-link>
           </li>
+          <li class="nav-item ms-auto">
+            <button 
+              @click="logout" 
+              class="btn btn-outline-danger btn-sm"
+            >
+              <i class="bi bi-box-arrow-right me-2"></i>
+              Logout
+            </button>
+          </li>
         </ul>
       </div>
     </div>
@@ -137,6 +146,10 @@ const logout = () => {
   padding: 1rem 0;
 }
 
+.nav-pills {
+  align-items: center;
+}
+
 .nav-pills .nav-link {
   color: #495057;
   margin: 0 0.5rem;
@@ -163,6 +176,10 @@ const logout = () => {
   
   .nav-pills .nav-item {
     flex: 0 0 auto;
+  }
+  
+  .nav-pills .nav-item.ms-auto {
+    margin-left: 1rem !important;
   }
 }
 </style>

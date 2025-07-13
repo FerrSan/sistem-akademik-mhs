@@ -1,19 +1,389 @@
 {
-  "posts": [
+  "users": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "username": "admin",
+      "password": "admin123",
+      "role": "admin",
+      "nama": "Administrator",
+      "email": "admin@university.ac.id"
+    },
+    {
+      "id": 2,
+      "username": "dosen01",
+      "password": "dosen123",
+      "role": "dosen",
+      "nama": "Dr. Budi Santoso",
+      "email": "budi.santoso@university.ac.id",
+      "nip": "198501012010011001"
+    },
+    {
+      "id": 3,
+      "username": "dosen02",
+      "password": "dosen123",
+      "role": "dosen",
+      "nama": "Dr. Siti Aminah",
+      "email": "siti.aminah@university.ac.id",
+      "nip": "198601012010012001"
+    },
+    {
+      "id": 4,
+      "username": "20220001",
+      "password": "mhs123",
+      "role": "mahasiswa",
+      "nama": "Ahmad Rizki",
+      "email": "ahmad.rizki@student.university.ac.id",
+      "nim": "20220001"
+    },
+    {
+      "id": 5,
+      "username": "20220002",
+      "password": "mhs123",
+      "role": "mahasiswa",
+      "nama": "Siti Nurhaliza",
+      "email": "siti.nurhaliza@student.university.ac.id",
+      "nim": "20220002"
+    },
+    {
+      "id": 6,
+      "username": "20210001",
+      "password": "mhs123",
+      "role": "mahasiswa",
+      "nama": "Budi Pratama",
+      "email": "budi.pratama@student.university.ac.id",
+      "nim": "20210001"
     }
   ],
-  "comments": [
+  "mahasiswa": [
     {
       "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "nim": "20220001",
+      "nama": "Ahmad Rizki",
+      "email": "ahmad.rizki@student.university.ac.id",
+      "jurusan": "Teknik Informatika",
+      "angkatan": "2022",
+      "status": "Non-Aktif",
+      "ipk": 3.65,
+      "alamat": "Jl. Sudirman No. 123, Jakarta",
+      "telepon": "081234567891",
+      "tanggalLahir": "2004-05-15",
+      "jenisKelamin": "L",
+      "createdAt": "2022-08-01T00:00:00.000Z",
+      "updatedAt": "2025-07-12T15:38:38.841Z"
+    },
+    {
+      "id": 2,
+      "nim": "20220002",
+      "nama": "Siti Nurhaliza",
+      "email": "siti.nurhaliza@student.university.ac.id",
+      "jurusan": "Sistem Informasi",
+      "angkatan": "2022",
+      "status": "Lulus",
+      "ipk": 3.83,
+      "alamat": "Jl. Merdeka No. 456, Jakarta",
+      "telepon": "081234567891",
+      "tanggalLahir": "2004-08-20",
+      "jenisKelamin": "P",
+      "createdAt": "2022-08-01T00:00:00.000Z",
+      "updatedAt": "2025-07-12T15:46:02.365Z"
+    },
+    {
+      "id": 3,
+      "nim": "20210001",
+      "nama": "Budi Pratama",
+      "email": "budi.pratama@student.university.ac.id",
+      "jurusan": "Teknik Informatika",
+      "angkatan": "2021",
+      "status": "Aktif",
+      "ipk": 3.45,
+      "alamat": "Jl. Gatot Subroto No. 789, Jakarta",
+      "telepon": "081234567892",
+      "tanggalLahir": "2003-03-10",
+      "jenisKelamin": "L",
+      "createdAt": "2021-08-01T00:00:00.000Z",
+      "updatedAt": "2024-01-15T10:30:00.000Z"
     }
   ],
-  "profile": {
-    "name": "typicode"
-  }
+  "jurusan": [
+    {
+      "id": 1,
+      "kode": "TI",
+      "nama": "Teknik Informatika"
+    },
+    {
+      "id": 2,
+      "kode": "SI",
+      "nama": "Sistem Informasi"
+    }
+  ],
+  "matakuliah": [
+    {
+      "id": 1,
+      "kode": "IF101",
+      "nama": "Dasar Pemrograman",
+      "sks": 4,
+      "semester": 1
+    },
+    {
+      "id": 2,
+      "kode": "IF102",
+      "nama": "Matematika Diskrit",
+      "sks": 3,
+      "semester": 1
+    },
+    {
+      "id": 3,
+      "kode": "IF103",
+      "nama": "Pengantar Teknologi Informasi",
+      "sks": 2,
+      "semester": 1
+    },
+    {
+      "id": 4,
+      "kode": "IF104",
+      "nama": "Algoritma dan Struktur Data",
+      "sks": 4,
+      "semester": 1
+    },
+    {
+      "id": 5,
+      "kode": "UNI101",
+      "nama": "Bahasa Indonesia",
+      "sks": 2,
+      "semester": 1
+    },
+    {
+      "id": 6,
+      "kode": "UNI102",
+      "nama": "Bahasa Inggris",
+      "sks": 2,
+      "semester": 1
+    },
+    {
+      "id": 7,
+      "kode": "IF201",
+      "nama": "Pemrograman Berorientasi Objek",
+      "sks": 4,
+      "semester": 2
+    },
+    {
+      "id": 8,
+      "kode": "IF202",
+      "nama": "Basis Data",
+      "sks": 3,
+      "semester": 2
+    },
+    {
+      "id": 9,
+      "kode": "IF203",
+      "nama": "Sistem Operasi",
+      "sks": 3,
+      "semester": 2
+    },
+    {
+      "id": 10,
+      "kode": "IF204",
+      "nama": "Jaringan Komputer",
+      "sks": 3,
+      "semester": 2
+    },
+    {
+      "id": 11,
+      "kode": "IF205",
+      "nama": "Statistika",
+      "sks": 3,
+      "semester": 2
+    },
+    {
+      "id": 12,
+      "kode": "IF301",
+      "nama": "Pemrograman Web",
+      "sks": 3,
+      "semester": 3
+    },
+    {
+      "id": 13,
+      "kode": "IF302",
+      "nama": "Rekayasa Perangkat Lunak",
+      "sks": 3,
+      "semester": 3
+    },
+    {
+      "id": 14,
+      "kode": "IF303",
+      "nama": "Sistem Informasi",
+      "sks": 3,
+      "semester": 3
+    },
+    {
+      "id": 15,
+      "kode": "IF304",
+      "nama": "Kecerdasan Buatan",
+      "sks": 3,
+      "semester": 3
+    },
+    {
+      "id": 16,
+      "kode": "IF305",
+      "nama": "Interaksi Manusia Komputer",
+      "sks": 3,
+      "semester": 3
+    }
+  ],
+  "nilai": [
+    {
+      "id": 1,
+      "mahasiswaId": 1,
+      "mataKuliahId": 1,
+      "semester": 1,
+      "nilaiAngka": 85,
+      "nilaiHuruf": "A",
+      "bobot": 16,
+      "createdAt": "2022-12-20T10:00:00.000Z",
+      "updatedAt": "2022-12-20T10:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "mahasiswaId": 1,
+      "mataKuliahId": 2,
+      "semester": 1,
+      "nilaiAngka": 78,
+      "nilaiHuruf": "B+",
+      "bobot": 10.5,
+      "createdAt": "2022-12-20T10:00:00.000Z",
+      "updatedAt": "2022-12-20T10:00:00.000Z"
+    },
+    {
+      "id": 3,
+      "mahasiswaId": 1,
+      "mataKuliahId": 3,
+      "semester": 1,
+      "nilaiAngka": 82,
+      "nilaiHuruf": "A-",
+      "bobot": 7.5,
+      "createdAt": "2022-12-20T10:00:00.000Z",
+      "updatedAt": "2022-12-20T10:00:00.000Z"
+    },
+    {
+      "id": 4,
+      "mahasiswaId": 1,
+      "mataKuliahId": 4,
+      "semester": 1,
+      "nilaiAngka": 75,
+      "nilaiHuruf": "B+",
+      "bobot": 14,
+      "createdAt": "2022-12-20T10:00:00.000Z",
+      "updatedAt": "2022-12-20T10:00:00.000Z"
+    },
+    {
+      "id": 5,
+      "mahasiswaId": 1,
+      "mataKuliahId": 5,
+      "semester": 1,
+      "nilaiAngka": 88,
+      "nilaiHuruf": "A",
+      "bobot": 8,
+      "createdAt": "2022-12-20T10:00:00.000Z",
+      "updatedAt": "2022-12-20T10:00:00.000Z"
+    },
+    {
+      "id": 6,
+      "mahasiswaId": 1,
+      "mataKuliahId": 6,
+      "semester": 1,
+      "nilaiAngka": 80,
+      "nilaiHuruf": "A-",
+      "bobot": 7.5,
+      "createdAt": "2022-12-20T10:00:00.000Z",
+      "updatedAt": "2022-12-20T10:00:00.000Z"
+    },
+    {
+      "id": 7,
+      "mahasiswaId": 1,
+      "mataKuliahId": 7,
+      "semester": 2,
+      "nilaiAngka": 83,
+      "nilaiHuruf": "A-",
+      "bobot": 15,
+      "createdAt": "2023-06-20T10:00:00.000Z",
+      "updatedAt": "2023-06-20T10:00:00.000Z"
+    },
+    {
+      "id": 8,
+      "mahasiswaId": 1,
+      "mataKuliahId": 8,
+      "semester": 2,
+      "nilaiAngka": 90,
+      "nilaiHuruf": "A",
+      "bobot": 12,
+      "createdAt": "2023-06-20T10:00:00.000Z",
+      "updatedAt": "2023-06-20T10:00:00.000Z"
+    },
+    {
+      "id": 9,
+      "mahasiswaId": 1,
+      "mataKuliahId": 9,
+      "semester": 2,
+      "nilaiAngka": 76,
+      "nilaiHuruf": "B+",
+      "bobot": 10.5,
+      "createdAt": "2023-06-20T10:00:00.000Z",
+      "updatedAt": "2023-06-20T10:00:00.000Z"
+    },
+    {
+      "id": 10,
+      "mahasiswaId": 1,
+      "mataKuliahId": 10,
+      "semester": 2,
+      "nilaiAngka": 85,
+      "nilaiHuruf": "A",
+      "bobot": 12,
+      "createdAt": "2023-06-20T10:00:00.000Z",
+      "updatedAt": "2023-06-20T10:00:00.000Z"
+    },
+    {
+      "id": 11,
+      "mahasiswaId": 1,
+      "mataKuliahId": 11,
+      "semester": 2,
+      "nilaiAngka": 72,
+      "nilaiHuruf": "B",
+      "bobot": 9,
+      "createdAt": "2023-06-20T10:00:00.000Z",
+      "updatedAt": "2023-06-20T10:00:00.000Z"
+    },
+    {
+      "id": 12,
+      "mahasiswaId": 2,
+      "mataKuliahId": 1,
+      "semester": 1,
+      "nilaiAngka": 90,
+      "nilaiHuruf": "A",
+      "bobot": 16,
+      "createdAt": "2022-12-20T10:00:00.000Z",
+      "updatedAt": "2022-12-20T10:00:00.000Z"
+    },
+    {
+      "id": 13,
+      "mahasiswaId": 2,
+      "mataKuliahId": 2,
+      "semester": 1,
+      "nilaiAngka": 85,
+      "nilaiHuruf": "A",
+      "bobot": 12,
+      "createdAt": "2022-12-20T10:00:00.000Z",
+      "updatedAt": "2022-12-20T10:00:00.000Z"
+    },
+    {
+      "id": 14,
+      "mahasiswaId": 2,
+      "mataKuliahId": 3,
+      "semester": 1,
+      "nilaiAngka": 88,
+      "nilaiHuruf": "A",
+      "bobot": 8,
+      "createdAt": "2022-12-20T10:00:00.000Z",
+      "updatedAt": "2022-12-20T10:00:00.000Z"
+    }
+  ]
 }

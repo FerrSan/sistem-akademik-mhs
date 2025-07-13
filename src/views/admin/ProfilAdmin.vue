@@ -1,14 +1,12 @@
 <!-- src/views/admin/ProfilAdmin.vue -->
 <template>
   <div class="profil-admin">
-    <!-- Page Header -->
     <div class="mb-4">
       <h1 class="h3 mb-0">Profil Admin</h1>
       <p class="text-muted">Kelola informasi profil Anda</p>
     </div>
 
     <div class="row">
-      <!-- Profile Info Card -->
       <div class="col-md-4">
         <div class="card border-0 shadow-sm mb-4">
           <div class="card-body text-center">
@@ -24,7 +22,6 @@
 
       <!-- Profile Form -->
       <div class="col-md-8">
-        <!-- Basic Info -->
         <div class="card border-0 shadow-sm mb-4">
           <div class="card-header bg-white">
             <h5 class="mb-0">Informasi Dasar</h5>

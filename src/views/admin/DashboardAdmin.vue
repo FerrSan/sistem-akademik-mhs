@@ -8,9 +8,6 @@
         <i class="bi bi-calendar me-2"></i>
         {{ currentDate }}
       </div>
-          <button @click="authStore.logout" class="btn btn-outline-danger btn-sm">
-      <i class="bi bi-box-arrow-right me-1"></i> Logout
-    </button>
     </div>
 
     <!-- Statistics Cards -->
@@ -181,10 +178,6 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useMahasiswaStore } from '@/stores/mahasiswa'
-import { useAuthStore } from '@/stores/auth'
-
-const authStore = useAuthStore()
-
 
 const mahasiswaStore = useMahasiswaStore()
 
@@ -253,7 +246,7 @@ const loadStatistics = async () => {
   stats.value = {
     totalMahasiswa: statistics.total,
     mahasiswaAktif: statistics.aktif,
-    totalDosen: 12,
+    totalDosen: 2, // Updated to match db.json
     avgIPK: statistics.avgIPK
   }
   

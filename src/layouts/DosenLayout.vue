@@ -82,6 +82,17 @@
           
           <li class="nav-item mb-2">
             <router-link 
+              to="/dosen/input-nilai" 
+              class="nav-link"
+              :class="{ 'active': $route.name === 'input-nilai' }"
+            >
+              <i class="bi bi-pencil-square me-2"></i>
+              Input Nilai
+            </router-link>
+          </li>
+          
+          <li class="nav-item mb-2">
+            <router-link 
               to="/dosen/profil" 
               class="nav-link"
               :class="{ 'active': $route.name === 'dosen-profil' }"
@@ -91,6 +102,17 @@
             </router-link>
           </li>
         </ul>
+        
+        <!-- Logout Button di Sidebar -->
+        <div class="mt-auto p-3">
+          <button 
+            @click="logout" 
+            class="btn btn-danger w-100"
+          >
+            <i class="bi bi-box-arrow-right me-2"></i>
+            Logout
+          </button>
+        </div>
       </div>
     </nav>
 
@@ -177,6 +199,8 @@ const logout = () => {
 .sidebar-content {
   height: 100%;
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .nav-link {

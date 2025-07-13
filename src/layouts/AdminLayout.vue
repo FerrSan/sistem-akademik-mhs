@@ -102,6 +102,17 @@
             </router-link>
           </li>
         </ul>
+        
+        <!-- Logout Button di Sidebar -->
+        <div class="mt-auto p-3">
+          <button 
+            @click="logout" 
+            class="btn btn-danger w-100"
+          >
+            <i class="bi bi-box-arrow-right me-2"></i>
+            Logout
+          </button>
+        </div>
       </div>
     </nav>
 
@@ -122,8 +133,6 @@
 </template>
 
 <script setup>
-import Sidebar from '@/components/common/Sidebar.vue'
-import Footer from '@/components/common/Footer.vue'
 import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuthStore } from '@/stores/auth'
@@ -140,7 +149,7 @@ const toggleSidebar = () => {
 }
 
 const logout = () => {
-  if (confirm('Apakah Anda yakin ingin keluar?')) {
+  if (confirm('Yakin ingin logout?')) {
     authStore.logout()
     router.push('/login')
   }
@@ -176,6 +185,8 @@ const logout = () => {
 .sidebar-content {
   height: 100%;
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .nav-link {

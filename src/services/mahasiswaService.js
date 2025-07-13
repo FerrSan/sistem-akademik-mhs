@@ -212,7 +212,7 @@ const mahasiswaService = {
         data: data
       }
     } catch (error) {
-      console.error('Error fetching mahasiswa by jurusan:', error)
+      console.error('Error fetching mahasiswa b`y jurusan:', error)
       return {
         success: false,
         message: 'Gagal mengambil data mahasiswa',

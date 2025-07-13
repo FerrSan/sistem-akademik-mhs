@@ -23,6 +23,7 @@ import ProfilAdmin from '@/views/admin/ProfilAdmin.vue'
 import DashboardDosen from '@/views/dosen/DashboardDosen.vue'
 import MahasiswaListDosen from '@/views/dosen/MahasiswaList.vue'
 import ProfilDosen from '@/views/dosen/ProfilDosen.vue'
+import InputNilai from '@/views/dosen/InputNilai.vue'
 
 // Mahasiswa Views
 import DashboardMahasiswa from '@/views/mahasiswa/DashboardMahasiswa.vue'
@@ -114,6 +115,12 @@ const routes = [
         name: 'dosen-mahasiswa',
         component: MahasiswaListDosen,
         meta: { title: 'Data Mahasiswa' }
+      },
+      {
+        path: 'input-nilai',
+        name: 'input-nilai',
+        component: InputNilai,
+        meta: { title: 'Input Nilai' }
       },
       {
         path: 'profil',
