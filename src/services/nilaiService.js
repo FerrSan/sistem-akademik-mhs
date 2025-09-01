@@ -128,7 +128,6 @@ const nilaiService = {
       const ipk = totalSKS > 0 ? (totalBobot / totalSKS).toFixed(2) : 0
 
       // Update mahasiswa's IPK
-      const { data: mahasiswa } = await api.get(`/mahasiswa/${mahasiswaId}`)
       await api.patch(`/mahasiswa/${mahasiswaId}`, { ipk: parseFloat(ipk) })
 
       return {

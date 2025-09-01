@@ -1,10 +1,16 @@
 <!-- src/views/mahasiswa/DashboardMahasiswa.vue -->
 <template>
-  <div class="dashboard-mahasiswa">
-    <!-- Welcome Section -->
-    <div class="mb-4">
-      <h1 class="h3 mb-0">Dashboard Mahasiswa</h1>
-      <p class="text-muted">Selamat datang, {{ mahasiswaData?.nama || 'Mahasiswa' }}</p>
+  <div class="min-h-screen gradient-bg py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Welcome Section -->
+      <div class="mb-8 animate-fade-in-up">
+        <div class="text-center">
+          <h1 class="text-4xl font-bold text-gray-900 mb-3">
+            🎓 Dashboard Mahasiswa
+          </h1>
+          <p class="text-xl text-gray-600">Selamat datang, {{ mahasiswaData?.nama || 'Mahasiswa' }}</p>
+        </div>
+      </div>
     </div>
 
     <!-- Profile Overview -->

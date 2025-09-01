@@ -1,126 +1,134 @@
 <!-- src/views/admin/LaporanView.vue -->
 <template>
-  <div class="laporan-view">
-    <!-- Page Header -->
-    <div class="d-flex justify-content-between align-items-center mb-4">
-      <h1 class="h3 mb-0">Laporan Mahasiswa</h1>
-      <button class="btn btn-primary" @click="generateReport" :disabled="loading">
-        <i class="bi bi-download me-2"></i>
-        Download Laporan
-      </button>
-    </div>
+  <div class="min-h-screen gradient-bg py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Page Header -->
+      <div class="mb-8 animate-fade-in-up">
+        <div class="flex justify-between items-center">
+          <div>
+            <h1 class="text-4xl font-bold text-gray-900 mb-2">📈 Laporan Mahasiswa</h1>
+            <p class="text-xl text-gray-600">Generate dan download laporan data mahasiswa</p>
+          </div>
+          <button class="btn-modern btn-gradient-primary" @click="generateReport" :disabled="loading">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+            </svg>
+            Download Laporan
+          </button>
+        </div>
+      </div>
 
-    <!-- Filter Card -->
-    <div class="card border-0 shadow-sm mb-4">
-      <div class="card-body">
-        <h5 class="card-title mb-3">Filter Laporan</h5>
-        <div class="row g-3">
-          <div class="col-md-3">
-            <label class="form-label">Jurusan</label>
-            <select class="form-select" v-model="filters.jurusan">
-              <option value="">Semua Jurusan</option>
-              <option value="Teknik Informatika">Teknik Informatika</option>
-              <option value="Sistem Informasi">Sistem Informasi</option>
-            </select>
-          </div>
-          <div class="col-md-3">
-            <label class="form-label">Angkatan</label>
-            <select class="form-select" v-model="filters.angkatan">
-              <option value="">Semua Angkatan</option>
-              <option value="2020">2020</option>
-              <option value="2021">2021</option>
-              <option value="2022">2022</option>
-              <option value="2023">2023</option>
-            </select>
-          </div>
-          <div class="col-md-3">
-            <label class="form-label">Status</label>
-            <select class="form-select" v-model="filters.status">
-              <option value="">Semua Status</option>
-              <option value="Aktif">Aktif</option>
-              <option value="Non-Aktif">Non-Aktif</option>
-              <option value="Lulus">Lulus</option>
-            </select>
-          </div>
-          <div class="col-md-3">
-            <label class="form-label">Format</label>
-            <select class="form-select" v-model="format">
-              <option value="csv">CSV</option>
-              <option value="pdf">PDF</option>
-            </select>
+      <!-- Filter Card -->
+      <div class="card-modern mb-6 animate-fade-in-up">
+        <div class="p-6">
+          <h3 class="text-lg font-semibold text-gray-900 mb-4">🔍 Filter Laporan</h3>
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Jurusan</label>
+              <select class="input-modern" v-model="filters.jurusan">
+                <option value="">Semua Jurusan</option>
+                <option value="Teknik Informatika">Teknik Informatika</option>
+                <option value="Sistem Informasi">Sistem Informasi</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Angkatan</label>
+              <select class="input-modern" v-model="filters.angkatan">
+                <option value="">Semua Angkatan</option>
+                <option value="2020">2020</option>
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
+                <option value="2023">2023</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Status</label>
+              <select class="input-modern" v-model="filters.status">
+                <option value="">Semua Status</option>
+                <option value="Aktif">Aktif</option>
+                <option value="Non-Aktif">Non-Aktif</option>
+                <option value="Lulus">Lulus</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Format</label>
+              <select class="input-modern" v-model="format">
+                <option value="csv">CSV</option>
+                <option value="pdf">PDF</option>
+              </select>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- Preview Table -->
-    <div class="card border-0 shadow-sm">
-      <div class="card-header bg-white">
-        <h5 class="mb-0">Preview Data</h5>
-      </div>
-      <div class="card-body">
-        <div v-if="loading" class="text-center py-4">
-          <div class="spinner-border text-primary" role="status">
-            <span class="visually-hidden">Loading...</span>
+      <!-- Preview Table -->
+      <div class="card-modern animate-fade-in-up">
+        <div class="p-6">
+          <h3 class="text-lg font-semibold text-gray-900 mb-4">📄 Preview Data</h3>
+          
+          <div v-if="loading" class="flex justify-center items-center py-12">
+            <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+          </div>
+          
+          <div v-else class="overflow-hidden">
+            <div class="overflow-x-auto">
+              <table class="min-w-full divide-y divide-gray-200">
+                <thead class="bg-gradient-to-r from-gray-50 to-gray-100">
+                  <tr>
+                    <th class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">No</th>
+                    <th class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">NIM</th>
+                    <th class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Nama</th>
+                    <th class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Jurusan</th>
+                    <th class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Angkatan</th>
+                    <th class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Status</th>
+                    <th class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">IPK</th>
+                  </tr>
+                </thead>
+                <tbody class="bg-white divide-y divide-gray-200">
+                  <tr v-for="(mhs, index) in filteredData" :key="mhs.id" class="hover:bg-gray-50 transition-colors duration-200">
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ index + 1 }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ mhs.nim }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ mhs.nama }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ mhs.jurusan }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ mhs.angkatan }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                      <span class="inline-flex px-3 py-1 text-xs font-semibold rounded-full" :class="{
+                        'bg-green-100 text-green-800': mhs.status === 'Aktif',
+                        'bg-yellow-100 text-yellow-800': mhs.status === 'Non-Aktif',
+                        'bg-blue-100 text-blue-800': mhs.status === 'Lulus'
+                      }">{{ mhs.status }}</span>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ mhs.ipk || '-' }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="mt-4 p-4 bg-gray-50 rounded-lg">
+              <p class="text-sm font-medium text-gray-700">
+                Total: <span class="text-blue-600">{{ filteredData.length }}</span> mahasiswa
+              </p>
+            </div>
           </div>
         </div>
-        <div v-else class="table-responsive">
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <th>No</th>
-                <th>NIM</th>
-                <th>Nama</th>
-                <th>Jurusan</th>
-                <th>Angkatan</th>
-                <th>Status</th>
-                <th>IPK</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="(mhs, index) in filteredData" :key="mhs.id">
-                <td>{{ index + 1 }}</td>
-                <td>{{ mhs.nim }}</td>
-                <td>{{ mhs.nama }}</td>
-                <td>{{ mhs.jurusan }}</td>
-                <td>{{ mhs.angkatan }}</td>
-                <td>
-                  <span class="badge" :class="{
-                    'bg-success': mhs.status === 'Aktif',
-                    'bg-warning': mhs.status === 'Non-Aktif',
-                    'bg-info': mhs.status === 'Lulus'
-                  }">{{ mhs.status }}</span>
-                </td>
-                <td>{{ mhs.ipk || '-' }}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="text-muted mt-3">
-          Total: {{ filteredData.length }} mahasiswa
-        </div>
       </div>
-    </div>
 
-    <!-- Statistics -->
-    <div class="row g-3 mt-4">
-      <div class="col-md-6">
-        <div class="card border-0 shadow-sm">
-          <div class="card-header bg-white">
-            <h6 class="mb-0">Statistik per Jurusan</h6>
-          </div>
-          <div class="card-body">
-            <canvas ref="jurusanChart"></canvas>
+      <!-- Statistics -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+        <div class="card-modern animate-fade-in-up">
+          <div class="p-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">📊 Statistik per Jurusan</h3>
+            <div class="h-64">
+              <canvas ref="jurusanChart" class="max-h-full w-full"></canvas>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="col-md-6">
-        <div class="card border-0 shadow-sm">
-          <div class="card-header bg-white">
-            <h6 class="mb-0">Statistik per Status</h6>
-          </div>
-          <div class="card-body">
-            <canvas ref="statusChart"></canvas>
+        
+        <div class="card-modern animate-fade-in-up">
+          <div class="p-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">📈 Statistik per Status</h3>
+            <div class="h-64">
+              <canvas ref="statusChart" class="max-h-full w-full"></canvas>
+            </div>
           </div>
         </div>
       </div>
@@ -279,8 +287,3 @@ onMounted(async () => {
 })
 </script>
 
-<style scoped>
-canvas {
-  max-height: 200px;
-}
-</style>

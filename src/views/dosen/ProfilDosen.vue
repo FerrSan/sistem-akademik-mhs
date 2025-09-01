@@ -1,162 +1,176 @@
 <!-- src/views/dosen/ProfilDosen.vue -->
 <template>
-  <div class="profil-dosen">
-    <!-- Page Header -->
-    <div class="mb-4">
-      <h1 class="h3 mb-0">Profil Dosen</h1>
-      <p class="text-muted">Kelola informasi profil Anda</p>
-    </div>
-
-    <div class="row">
-      <!-- Profile Info Card -->
-      <div class="col-md-4">
-        <div class="card border-0 shadow-sm mb-4">
-          <div class="card-body text-center">
-            <div class="avatar-large mx-auto mb-3">
-              <i class="bi bi-person-circle" style="font-size: 5rem; color: #28a745;"></i>
-            </div>
-            <h5 class="mb-1">{{ user?.nama || 'Dosen' }}</h5>
-            <p class="text-muted mb-2">{{ user?.email || '-' }}</p>
-            <p class="text-muted mb-3">NIP: {{ user?.nip || '-' }}</p>
-            <span class="badge bg-success">Dosen</span>
-          </div>
-        </div>
-
-        <!-- Contact Info -->
-        <div class="card border-0 shadow-sm">
-          <div class="card-header bg-white">
-            <h6 class="mb-0">Informasi Kontak</h6>
-          </div>
-          <div class="card-body">
-            <div class="mb-3">
-              <small class="text-muted">Email</small>
-              <p class="mb-0">{{ user?.email || '-' }}</p>
-            </div>
-            <div class="mb-3">
-              <small class="text-muted">NIP</small>
-              <p class="mb-0">{{ user?.nip || '-' }}</p>
-            </div>
-            <div>
-              <small class="text-muted">Role</small>
-              <p class="mb-0">Dosen</p>
-            </div>
-          </div>
+  <div class="min-h-screen gradient-bg py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Page Header -->
+      <div class="mb-8 animate-fade-in-up">
+        <div class="text-center">
+          <h1 class="text-4xl font-bold text-gray-900 mb-3">👨‍🏫 Profil Dosen</h1>
+          <p class="text-xl text-gray-600">Kelola informasi profil Anda</p>
         </div>
       </div>
 
-      <!-- Profile Form -->
-      <div class="col-md-8">
-        <!-- Basic Info -->
-        <div class="card border-0 shadow-sm mb-4">
-          <div class="card-header bg-white">
-            <h5 class="mb-0">Informasi Dasar</h5>
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Profile Cards -->
+        <div class="lg:col-span-1 space-y-6">
+          <!-- Profile Info Card -->
+          <div class="card-modern text-center animate-fade-in-up">
+            <div class="p-8">
+              <div class="w-32 h-32 mx-auto mb-6 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center">
+                <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-2">{{ user?.nama || 'Dosen' }}</h3>
+              <p class="text-gray-600 mb-2">{{ user?.email || '-' }}</p>
+              <p class="text-gray-500 mb-4">NIP: {{ user?.nip || '-' }}</p>
+              <span class="inline-flex px-4 py-2 bg-green-100 text-green-800 text-sm font-semibold rounded-full">
+                Dosen
+              </span>
+            </div>
           </div>
-          <div class="card-body">
-            <form @submit.prevent="updateProfile">
-              <div class="row g-3">
-                <div class="col-md-6">
-                  <label class="form-label">Username</label>
-                  <input 
-                    type="text" 
-                    class="form-control" 
-                    :value="user?.username"
-                    disabled
-                  >
+
+          <!-- Contact Info -->
+          <div class="card-modern animate-fade-in-up">
+            <div class="p-6">
+              <h3 class="text-lg font-semibold text-gray-900 mb-4">📞 Informasi Kontak</h3>
+              <div class="space-y-4">
+                <div>
+                  <dt class="text-sm font-medium text-gray-500">Email</dt>
+                  <dd class="text-sm text-gray-900 font-medium">{{ user?.email || '-' }}</dd>
                 </div>
-                <div class="col-md-6">
-                  <label class="form-label">NIP</label>
-                  <input 
-                    type="text" 
-                    class="form-control" 
-                    :value="user?.nip"
-                    disabled
-                  >
+                <div>
+                  <dt class="text-sm font-medium text-gray-500">NIP</dt>
+                  <dd class="text-sm text-gray-900 font-medium">{{ user?.nip || '-' }}</dd>
                 </div>
-                <div class="col-12">
-                  <label class="form-label">Nama Lengkap</label>
+                <div>
+                  <dt class="text-sm font-medium text-gray-500">Role</dt>
+                  <dd class="text-sm text-gray-900 font-medium">Dosen</dd>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Forms -->
+        <div class="lg:col-span-2 space-y-6">
+          <!-- Basic Info -->
+          <div class="card-modern animate-fade-in-up">
+            <div class="p-6">
+              <h3 class="text-lg font-semibold text-gray-900 mb-6">📝 Informasi Dasar</h3>
+              <form @submit.prevent="updateProfile" class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Username</label>
+                    <input 
+                      type="text" 
+                      class="input-modern bg-gray-50" 
+                      :value="user?.username"
+                      disabled
+                    >
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">NIP</label>
+                    <input 
+                      type="text" 
+                      class="input-modern bg-gray-50" 
+                      :value="user?.nip"
+                      disabled
+                    >
+                  </div>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2">Nama Lengkap</label>
                   <input 
                     type="text" 
-                    class="form-control" 
+                    class="input-modern" 
                     v-model="profileForm.nama"
                     required
+                    placeholder="Masukkan nama lengkap"
                   >
                 </div>
-                <div class="col-12">
-                  <label class="form-label">Email</label>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
                   <input 
                     type="email" 
-                    class="form-control" 
+                    class="input-modern" 
                     v-model="profileForm.email"
                     required
+                    placeholder="Masukkan email"
                   >
                 </div>
-                <div class="col-12">
-                  <button type="submit" class="btn btn-success" :disabled="saving">
-                    <span v-if="saving">
-                      <span class="spinner-border spinner-border-sm me-2"></span>
+                <div class="flex justify-end">
+                  <button type="submit" class="btn-modern btn-gradient-success" :disabled="saving">
+                    <span v-if="saving" class="flex items-center">
+                      <div class="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
                       Menyimpan...
                     </span>
-                    <span v-else>
-                      <i class="bi bi-check-circle me-2"></i>
+                    <span v-else class="flex items-center">
+                      <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                      </svg>
                       Simpan Perubahan
                     </span>
                   </button>
                 </div>
-              </div>
-            </form>
+              </form>
+            </div>
           </div>
-        </div>
 
-        <!-- Change Password -->
-        <div class="card border-0 shadow-sm">
-          <div class="card-header bg-white">
-            <h5 class="mb-0">Ubah Password</h5>
-          </div>
-          <div class="card-body">
-            <form @submit.prevent="changePassword">
-              <div class="row g-3">
-                <div class="col-12">
-                  <label class="form-label">Password Lama</label>
+          <!-- Change Password -->
+          <div class="card-modern animate-fade-in-up">
+            <div class="p-6">
+              <h3 class="text-lg font-semibold text-gray-900 mb-6">🔒 Ubah Password</h3>
+              <form @submit.prevent="changePassword" class="space-y-6">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2">Password Lama</label>
                   <input 
                     type="password" 
-                    class="form-control" 
+                    class="input-modern" 
                     v-model="passwordForm.oldPassword"
                     required
+                    placeholder="Masukkan password lama"
                   >
                 </div>
-                <div class="col-md-6">
-                  <label class="form-label">Password Baru</label>
-                  <input 
-                    type="password" 
-                    class="form-control" 
-                    v-model="passwordForm.newPassword"
-                    required
-                  >
-                  <small class="text-muted">Minimal 6 karakter</small>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Password Baru</label>
+                    <input 
+                      type="password" 
+                      class="input-modern" 
+                      v-model="passwordForm.newPassword"
+                      required
+                      placeholder="Masukkan password baru"
+                    >
+                    <p class="text-xs text-gray-500 mt-1">Minimal 6 karakter</p>
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Konfirmasi Password Baru</label>
+                    <input 
+                      type="password" 
+                      class="input-modern" 
+                      v-model="passwordForm.confirmPassword"
+                      required
+                      placeholder="Konfirmasi password baru"
+                    >
+                  </div>
                 </div>
-                <div class="col-md-6">
-                  <label class="form-label">Konfirmasi Password Baru</label>
-                  <input 
-                    type="password" 
-                    class="form-control" 
-                    v-model="passwordForm.confirmPassword"
-                    required
-                  >
-                </div>
-                <div class="col-12">
-                  <button type="submit" class="btn btn-warning" :disabled="changingPassword">
-                    <span v-if="changingPassword">
-                      <span class="spinner-border spinner-border-sm me-2"></span>
+                <div class="flex justify-end">
+                  <button type="submit" class="btn-modern btn-gradient-warning" :disabled="changingPassword">
+                    <span v-if="changingPassword" class="flex items-center">
+                      <div class="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
                       Mengubah...
                     </span>
-                    <span v-else>
-                      <i class="bi bi-key me-2"></i>
+                    <span v-else class="flex items-center">
+                      <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m-2-2l-2-2m2 2l-2 2m0 0v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6a2 2 0 012-2m8 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v.5M15 7H9"/>
+                      </svg>
                       Ubah Password
                     </span>
                   </button>
                 </div>
-              </div>
-            </form>
+              </form>
+            </div>
           </div>
         </div>
       </div>
@@ -261,16 +275,3 @@ const changePassword = async () => {
 }
 </script>
 
-<style scoped>
-.avatar-large {
-  width: 100px;
-  height: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.card-header {
-  background-color: #f8f9fa !important;
-}
-</style>

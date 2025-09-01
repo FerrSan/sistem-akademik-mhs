@@ -1,7 +1,6 @@
 // src/services/api.js
 import axios from 'axios'
 import { useAuthStore } from '@/stores/auth'
-import router from '@/router'
 
 // Create axios instance
 const api = axios.create({
@@ -38,11 +37,12 @@ api.interceptors.response.use(
     if (error.response) {
       // Handle specific error codes
       switch (error.response.status) {
-        case 401:
+        case 401: {
           // Unauthorized - clear auth and redirect to login
           const authStore = useAuthStore()
           authStore.logout()
           break
+        }
         case 403:
           // Forbidden - show error message
           console.error('Access forbidden:', error.response.data.message)

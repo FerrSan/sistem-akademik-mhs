@@ -95,7 +95,7 @@
       "jurusan": "Teknik Informatika",
       "angkatan": "2021",
       "status": "Aktif",
-      "ipk": 3.45,
+      "ipk": 3.34,
       "alamat": "Jl. Gatot Subroto No. 789, Jakarta",
       "telepon": "081234567892",
       "tanggalLahir": "2003-03-10",
@@ -384,6 +384,72 @@
       "bobot": 8,
       "createdAt": "2022-12-20T10:00:00.000Z",
       "updatedAt": "2022-12-20T10:00:00.000Z"
+    },
+    {
+      "mahasiswaId": 3,
+      "semester": 1,
+      "mataKuliahId": 1,
+      "nilaiAngka": 90,
+      "nilaiHuruf": "A",
+      "bobot": 16,
+      "updatedAt": "2025-09-01T11:24:35.725Z",
+      "id": 1756725875725.4653,
+      "createdAt": "2025-09-01T11:24:35.725Z"
+    },
+    {
+      "mahasiswaId": 3,
+      "semester": 1,
+      "mataKuliahId": 2,
+      "nilaiAngka": 82,
+      "nilaiHuruf": "A-",
+      "bobot": 11.25,
+      "updatedAt": "2025-09-01T11:24:35.824Z",
+      "id": 1756725875824.6465,
+      "createdAt": "2025-09-01T11:24:35.824Z"
+    },
+    {
+      "mahasiswaId": 3,
+      "semester": 1,
+      "mataKuliahId": 3,
+      "nilaiAngka": 75,
+      "nilaiHuruf": "B+",
+      "bobot": 7,
+      "updatedAt": "2025-09-01T11:24:35.872Z",
+      "id": 1756725875872.0686,
+      "createdAt": "2025-09-01T11:24:35.872Z"
+    },
+    {
+      "mahasiswaId": 3,
+      "semester": 1,
+      "mataKuliahId": 4,
+      "nilaiAngka": 71,
+      "nilaiHuruf": "B",
+      "bobot": 12,
+      "updatedAt": "2025-09-01T11:24:35.904Z",
+      "id": 1756725875904.7188,
+      "createdAt": "2025-09-01T11:24:35.904Z"
+    },
+    {
+      "mahasiswaId": 3,
+      "semester": 1,
+      "mataKuliahId": 5,
+      "nilaiAngka": 65,
+      "nilaiHuruf": "B-",
+      "bobot": 5.5,
+      "updatedAt": "2025-09-01T11:24:37.990Z",
+      "id": 1756725877990.5842,
+      "createdAt": "2025-09-01T11:24:37.990Z"
+    },
+    {
+      "mahasiswaId": 3,
+      "semester": 1,
+      "mataKuliahId": 6,
+      "nilaiAngka": 60,
+      "nilaiHuruf": "C+",
+      "bobot": 5,
+      "updatedAt": "2025-09-01T11:24:38.012Z",
+      "id": 1756725878012.653,
+      "createdAt": "2025-09-01T11:24:38.012Z"
     }
   ]
 }

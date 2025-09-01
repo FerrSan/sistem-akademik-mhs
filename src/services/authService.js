@@ -21,7 +21,7 @@ const authService = {
         }))
         
         // Remove password from user object
-        const { password, ...userWithoutPassword } = user
+        const { password: _, ...userWithoutPassword } = user
         
         return {
           success: true,
@@ -59,7 +59,7 @@ const authService = {
       const { data: user } = await api.get(`/users/${decoded.userId}`)
       
       if (user) {
-        const { password, ...userWithoutPassword } = user
+        const { password: _, ...userWithoutPassword } = user
         return {
           valid: true,
           user: userWithoutPassword
@@ -89,7 +89,7 @@ const authService = {
       const { data } = await api.put(`/users/${userId}`, updatedUser)
       
       // Remove password from response
-      const { password, ...userWithoutPassword } = data
+      const { password: _, ...userWithoutPassword } = data
       
       return {
         success: true,

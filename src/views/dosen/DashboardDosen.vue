@@ -1,10 +1,16 @@
 <!-- src/views/dosen/DashboardDosen.vue -->
 <template>
-  <div class="dashboard-dosen">
-    <!-- Page Header -->
-    <div class="mb-4">
-      <h1 class="h3 mb-0">Dashboard Dosen</h1>
-      <p class="text-muted">Selamat datang, {{ userName }}</p>
+  <div class="min-h-screen gradient-bg py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Page Header -->
+      <div class="mb-8 animate-fade-in-up">
+        <div class="text-center">
+          <h1 class="text-4xl font-bold text-gray-900 mb-3">
+            👨‍🏫 Dashboard Dosen
+          </h1>
+          <p class="text-xl text-gray-600">Selamat datang, {{ userName }}</p>
+        </div>
+      </div>
     </div>
 
     <!-- Statistics Cards -->

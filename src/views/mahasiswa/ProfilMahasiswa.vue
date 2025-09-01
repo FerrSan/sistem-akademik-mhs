@@ -1,291 +1,314 @@
 <!-- src/views/mahasiswa/ProfilMahasiswa.vue -->
 <template>
-  <div class="profil-mahasiswa">
-    <!-- Page Header -->
-    <div class="mb-4">
-      <h1 class="h3 mb-0">Profil Saya</h1>
-      <p class="text-muted">Informasi pribadi dan akademik</p>
-    </div>
+  <div class="min-h-screen gradient-bg py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Page Header -->
+      <div class="mb-8 animate-fade-in-up">
+        <div class="text-center">
+          <h1 class="text-4xl font-bold text-gray-900 mb-3">🎓 Profil Saya</h1>
+          <p class="text-xl text-gray-600">Informasi pribadi dan akademik</p>
+        </div>
+      </div>
 
-    <!-- Profile Content -->
-    <div class="row">
-      <!-- Profile Card -->
-      <div class="col-md-4">
-        <div class="card border-0 shadow-sm mb-4">
-          <div class="card-body text-center">
-            <div class="avatar-large mx-auto mb-3">
-              <i class="bi bi-person-circle" style="font-size: 5rem; color: #17a2b8;"></i>
-            </div>
-            <h5 class="mb-1">{{ mahasiswaData?.nama || user?.nama || '-' }}</h5>
-            <p class="text-muted mb-2">{{ mahasiswaData?.nim || '-' }}</p>
-            <span class="badge bg-info">Mahasiswa</span>
-            
-            <hr>
-            
-            <div class="text-start">
-              <div class="mb-2">
-                <small class="text-muted d-block">Program Studi</small>
-                <strong>{{ mahasiswaData?.jurusan || '-' }}</strong>
+      <!-- Profile Content -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Profile Card -->
+        <div class="lg:col-span-1">
+          <div class="card-modern text-center animate-fade-in-up">
+            <div class="p-8">
+              <div class="w-32 h-32 mx-auto mb-6 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-full flex items-center justify-center">
+                <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                </svg>
               </div>
-              <div class="mb-2">
-                <small class="text-muted d-block">Angkatan</small>
-                <strong>{{ mahasiswaData?.angkatan || '-' }}</strong>
-              </div>
-              <div class="mb-2">
-                <small class="text-muted d-block">IPK</small>
-                <strong class="text-primary">{{ mahasiswaData?.ipk || '0.00' }}</strong>
+              <h3 class="text-xl font-bold text-gray-900 mb-2">{{ mahasiswaData?.nama || user?.nama || '-' }}</h3>
+              <p class="text-gray-600 mb-4">{{ mahasiswaData?.nim || '-' }}</p>
+              <span class="inline-flex px-4 py-2 bg-blue-100 text-blue-800 text-sm font-semibold rounded-full mb-6">
+                Mahasiswa
+              </span>
+              
+              <div class="border-t pt-6 space-y-4 text-left">
+                <div>
+                  <dt class="text-sm font-medium text-gray-500">Program Studi</dt>
+                  <dd class="text-sm font-semibold text-gray-900">{{ mahasiswaData?.jurusan || '-' }}</dd>
+                </div>
+                <div>
+                  <dt class="text-sm font-medium text-gray-500">Angkatan</dt>
+                  <dd class="text-sm font-semibold text-gray-900">{{ mahasiswaData?.angkatan || '-' }}</dd>
+                </div>
+                <div>
+                  <dt class="text-sm font-medium text-gray-500">IPK</dt>
+                  <dd class="text-lg font-bold text-blue-600">{{ mahasiswaData?.ipk || '0.00' }}</dd>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- Detail Information -->
-      <div class="col-md-8">
-        <!-- Personal Information -->
-        <div class="card border-0 shadow-sm mb-4">
-          <div class="card-header bg-white d-flex justify-content-between align-items-center">
-            <h5 class="mb-0">
-              <i class="bi bi-person me-2"></i>
-              Informasi Pribadi
-            </h5>
-            <button 
-              v-if="!editMode" 
-              class="btn btn-sm btn-outline-primary"
-              @click="toggleEditMode"
-            >
-              <i class="bi bi-pencil me-1"></i>
-              Edit
-            </button>
-          </div>
-          <div class="card-body">
-            <!-- View Mode -->
-            <div v-if="!editMode" class="row g-3">
-              <div class="col-md-6">
-                <label class="text-muted small">Nama Lengkap</label>
-                <p class="mb-3">{{ mahasiswaData?.nama || '-' }}</p>
+        <!-- Detail Information -->
+        <div class="lg:col-span-2 space-y-6">
+          <!-- Personal Information -->
+          <div class="card-modern animate-fade-in-up">
+            <div class="p-6">
+              <div class="flex justify-between items-center mb-6">
+                <h3 class="text-lg font-semibold text-gray-900 flex items-center">
+                  <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                  </svg>
+                  Informasi Pribadi
+                </h3>
+                <button 
+                  v-if="!editMode" 
+                  class="btn-modern btn-outline text-sm"
+                  @click="toggleEditMode"
+                >
+                  <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+                  </svg>
+                  Edit
+                </button>
               </div>
-              <div class="col-md-6">
-                <label class="text-muted small">NIM</label>
-                <p class="mb-3">{{ mahasiswaData?.nim || '-' }}</p>
-              </div>
-              <div class="col-md-6">
-                <label class="text-muted small">Email</label>
-                <p class="mb-3">{{ mahasiswaData?.email || '-' }}</p>
-              </div>
-              <div class="col-md-6">
-                <label class="text-muted small">No. Telepon</label>
-                <p class="mb-3">{{ mahasiswaData?.telepon || '-' }}</p>
-              </div>
-              <div class="col-md-6">
-                <label class="text-muted small">Jenis Kelamin</label>
-                <p class="mb-3">{{ mahasiswaData?.jenisKelamin === 'L' ? 'Laki-laki' : 'Perempuan' }}</p>
-              </div>
-              <div class="col-md-6">
-                <label class="text-muted small">Tanggal Lahir</label>
-                <p class="mb-3">{{ formatDate(mahasiswaData?.tanggalLahir) }}</p>
-              </div>
-              <div class="col-12">
-                <label class="text-muted small">Alamat</label>
-                <p class="mb-0">{{ mahasiswaData?.alamat || '-' }}</p>
-              </div>
-            </div>
+              <div>
+                <!-- View Mode -->
+                <div v-if="!editMode" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <dt class="text-sm font-medium text-gray-500">Nama Lengkap</dt>
+                    <dd class="text-sm text-gray-900 font-medium">{{ mahasiswaData?.nama || '-' }}</dd>
+                  </div>
+                  <div>
+                    <dt class="text-sm font-medium text-gray-500">NIM</dt>
+                    <dd class="text-sm text-gray-900 font-medium">{{ mahasiswaData?.nim || '-' }}</dd>
+                  </div>
+                  <div>
+                    <dt class="text-sm font-medium text-gray-500">Email</dt>
+                    <dd class="text-sm text-gray-900 font-medium">{{ mahasiswaData?.email || '-' }}</dd>
+                  </div>
+                  <div>
+                    <dt class="text-sm font-medium text-gray-500">No. Telepon</dt>
+                    <dd class="text-sm text-gray-900 font-medium">{{ mahasiswaData?.telepon || '-' }}</dd>
+                  </div>
+                  <div>
+                    <dt class="text-sm font-medium text-gray-500">Jenis Kelamin</dt>
+                    <dd class="text-sm text-gray-900 font-medium">{{ mahasiswaData?.jenisKelamin === 'L' ? 'Laki-laki' : 'Perempuan' }}</dd>
+                  </div>
+                  <div>
+                    <dt class="text-sm font-medium text-gray-500">Tanggal Lahir</dt>
+                    <dd class="text-sm text-gray-900 font-medium">{{ formatDate(mahasiswaData?.tanggalLahir) }}</dd>
+                  </div>
+                  <div class="md:col-span-2">
+                    <dt class="text-sm font-medium text-gray-500">Alamat</dt>
+                    <dd class="text-sm text-gray-900 font-medium">{{ mahasiswaData?.alamat || '-' }}</dd>
+                  </div>
+                </div>
 
-            <!-- Edit Mode -->
-            <form v-else @submit.prevent="updateProfile">
-              <div class="row g-3">
-                <div class="col-md-6">
-                  <label class="form-label">Nama Lengkap</label>
-                  <input 
-                    type="text" 
-                    class="form-control" 
-                    v-model="editForm.nama"
-                    required
-                  >
-                </div>
-                <div class="col-md-6">
-                  <label class="form-label">NIM</label>
-                  <input 
-                    type="text" 
-                    class="form-control" 
-                    :value="mahasiswaData?.nim"
-                    disabled
-                  >
-                  <small class="text-muted">NIM tidak dapat diubah</small>
-                </div>
-                <div class="col-md-6">
-                  <label class="form-label">Email</label>
-                  <input 
-                    type="email" 
-                    class="form-control" 
-                    v-model="editForm.email"
-                    required
-                  >
-                </div>
-                <div class="col-md-6">
-                  <label class="form-label">No. Telepon</label>
-                  <input 
-                    type="tel" 
-                    class="form-control" 
-                    v-model="editForm.telepon"
-                    placeholder="08xxxxxxxxxx"
-                  >
-                </div>
-                <div class="col-md-6">
-                  <label class="form-label">Jenis Kelamin</label>
-                  <select 
-                    class="form-select" 
-                    v-model="editForm.jenisKelamin"
-                    required
-                  >
-                    <option value="L">Laki-laki</option>
-                    <option value="P">Perempuan</option>
-                  </select>
-                </div>
-                <div class="col-md-6">
-                  <label class="form-label">Tanggal Lahir</label>
-                  <input 
-                    type="date" 
-                    class="form-control" 
-                    v-model="editForm.tanggalLahir"
-                    required
-                  >
-                </div>
-                <div class="col-12">
-                  <label class="form-label">Alamat</label>
-                  <textarea 
-                    class="form-control" 
-                    v-model="editForm.alamat"
-                    rows="3"
-                    placeholder="Masukkan alamat lengkap"
-                  ></textarea>
-                </div>
-                <div class="col-12">
-                  <div class="d-flex gap-2">
-                    <button type="submit" class="btn btn-primary" :disabled="saving">
-                      <span v-if="saving">
-                        <span class="spinner-border spinner-border-sm me-2"></span>
+                <!-- Edit Mode -->
+                <form v-else @submit.prevent="updateProfile" class="space-y-6">
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label class="block text-sm font-medium text-gray-700 mb-2">Nama Lengkap</label>
+                      <input 
+                        type="text" 
+                        class="input-modern" 
+                        v-model="editForm.nama"
+                        required
+                        placeholder="Masukkan nama lengkap"
+                      >
+                    </div>
+                    <div>
+                      <label class="block text-sm font-medium text-gray-700 mb-2">NIM</label>
+                      <input 
+                        type="text" 
+                        class="input-modern bg-gray-50" 
+                        :value="mahasiswaData?.nim"
+                        disabled
+                      >
+                      <p class="text-xs text-gray-500 mt-1">NIM tidak dapat diubah</p>
+                    </div>
+                    <div>
+                      <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                      <input 
+                        type="email" 
+                        class="input-modern" 
+                        v-model="editForm.email"
+                        required
+                        placeholder="Masukkan email"
+                      >
+                    </div>
+                    <div>
+                      <label class="block text-sm font-medium text-gray-700 mb-2">No. Telepon</label>
+                      <input 
+                        type="tel" 
+                        class="input-modern" 
+                        v-model="editForm.telepon"
+                        placeholder="08xxxxxxxxxx"
+                      >
+                    </div>
+                    <div>
+                      <label class="block text-sm font-medium text-gray-700 mb-2">Jenis Kelamin</label>
+                      <select 
+                        class="input-modern" 
+                        v-model="editForm.jenisKelamin"
+                        required
+                      >
+                        <option value="L">Laki-laki</option>
+                        <option value="P">Perempuan</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label class="block text-sm font-medium text-gray-700 mb-2">Tanggal Lahir</label>
+                      <input 
+                        type="date" 
+                        class="input-modern" 
+                        v-model="editForm.tanggalLahir"
+                        required
+                      >
+                    </div>
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Alamat</label>
+                    <textarea 
+                      class="input-modern" 
+                      v-model="editForm.alamat"
+                      rows="3"
+                      placeholder="Masukkan alamat lengkap"
+                    ></textarea>
+                  </div>
+                  <div class="flex space-x-3">
+                    <button type="submit" class="btn-modern btn-gradient-primary" :disabled="saving">
+                      <span v-if="saving" class="flex items-center">
+                        <div class="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
                         Menyimpan...
                       </span>
-                      <span v-else>
-                        <i class="bi bi-check-circle me-2"></i>
+                      <span v-else class="flex items-center">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                        </svg>
                         Simpan Perubahan
                       </span>
                     </button>
                     <button 
                       type="button" 
-                      class="btn btn-light"
+                      class="btn-modern btn-outline"
                       @click="cancelEdit"
                       :disabled="saving"
                     >
                       Batal
                     </button>
                   </div>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-
-        <!-- Academic Information -->
-        <div class="card border-0 shadow-sm mb-4">
-          <div class="card-header bg-white">
-            <h5 class="mb-0">
-              <i class="bi bi-mortarboard me-2"></i>
-              Informasi Akademik
-            </h5>
-          </div>
-          <div class="card-body">
-            <div class="row g-3">
-              <div class="col-md-6">
-                <label class="text-muted small">Program Studi</label>
-                <p class="mb-3">{{ mahasiswaData?.jurusan || '-' }}</p>
-              </div>
-              <div class="col-md-6">
-                <label class="text-muted small">Angkatan</label>
-                <p class="mb-3">{{ mahasiswaData?.angkatan || '-' }}</p>
-              </div>
-              <div class="col-md-6">
-                <label class="text-muted small">Status</label>
-                <p class="mb-3">
-                  <span class="badge" :class="{
-                    'bg-success': mahasiswaData?.status === 'Aktif',
-                    'bg-warning': mahasiswaData?.status === 'Non-Aktif',
-                    'bg-info': mahasiswaData?.status === 'Lulus'
-                  }">{{ mahasiswaData?.status || '-' }}</span>
-                </p>
-              </div>
-              <div class="col-md-6">
-                <label class="text-muted small">IPK</label>
-                <p class="mb-3">
-                  <strong class="text-primary">{{ mahasiswaData?.ipk || '0.00' }}</strong>
-                </p>
+                </form>
               </div>
             </div>
           </div>
-        </div>
 
-        <!-- Change Password -->
-        <div class="card border-0 shadow-sm">
-          <div class="card-header bg-white">
-            <h5 class="mb-0">
-              <i class="bi bi-key me-2"></i>
-              Ubah Password
-            </h5>
+          <!-- Academic Information -->
+          <div class="card-modern animate-fade-in-up">
+            <div class="p-6">
+              <h3 class="text-lg font-semibold text-gray-900 mb-6 flex items-center">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"/>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
+                </svg>
+                Informasi Akademik
+              </h3>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <dt class="text-sm font-medium text-gray-500">Program Studi</dt>
+                  <dd class="text-sm font-semibold text-gray-900">{{ mahasiswaData?.jurusan || '-' }}</dd>
+                </div>
+                <div>
+                  <dt class="text-sm font-medium text-gray-500">Angkatan</dt>
+                  <dd class="text-sm font-semibold text-gray-900">{{ mahasiswaData?.angkatan || '-' }}</dd>
+                </div>
+                <div>
+                  <dt class="text-sm font-medium text-gray-500">Status</dt>
+                  <dd>
+                    <span class="inline-flex px-3 py-1 text-xs font-semibold rounded-full" :class="{
+                      'bg-green-100 text-green-800': mahasiswaData?.status === 'Aktif',
+                      'bg-yellow-100 text-yellow-800': mahasiswaData?.status === 'Non-Aktif',
+                      'bg-blue-100 text-blue-800': mahasiswaData?.status === 'Lulus'
+                    }">{{ mahasiswaData?.status || '-' }}</span>
+                  </dd>
+                </div>
+                <div>
+                  <dt class="text-sm font-medium text-gray-500">IPK</dt>
+                  <dd class="text-lg font-bold text-blue-600">{{ mahasiswaData?.ipk || '0.00' }}</dd>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="card-body">
-            <form @submit.prevent="changePassword">
-              <div class="row g-3">
-                <div class="col-12">
-                  <label class="form-label">Password Lama</label>
+
+          <!-- Change Password -->
+          <div class="card-modern animate-fade-in-up">
+            <div class="p-6">
+              <h3 class="text-lg font-semibold text-gray-900 mb-6 flex items-center">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m-2-2l-2-2m2 2l-2 2m0 0v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6a2 2 0 012-2m8 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v.5M15 7H9"/>
+                </svg>
+                Ubah Password
+              </h3>
+              <form @submit.prevent="changePassword" class="space-y-6">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2">Password Lama</label>
                   <input 
                     type="password" 
-                    class="form-control" 
+                    class="input-modern" 
                     v-model="passwordForm.oldPassword"
                     required
+                    placeholder="Masukkan password lama"
                   >
                 </div>
-                <div class="col-md-6">
-                  <label class="form-label">Password Baru</label>
-                  <input 
-                    type="password" 
-                    class="form-control" 
-                    v-model="passwordForm.newPassword"
-                    required
-                  >
-                  <small class="text-muted">Minimal 6 karakter</small>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Password Baru</label>
+                    <input 
+                      type="password" 
+                      class="input-modern" 
+                      v-model="passwordForm.newPassword"
+                      required
+                      placeholder="Masukkan password baru"
+                    >
+                    <p class="text-xs text-gray-500 mt-1">Minimal 6 karakter</p>
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Konfirmasi Password</label>
+                    <input 
+                      type="password" 
+                      class="input-modern" 
+                      v-model="passwordForm.confirmPassword"
+                      required
+                      placeholder="Konfirmasi password baru"
+                    >
+                  </div>
                 </div>
-                <div class="col-md-6">
-                  <label class="form-label">Konfirmasi Password</label>
-                  <input 
-                    type="password" 
-                    class="form-control" 
-                    v-model="passwordForm.confirmPassword"
-                    required
-                  >
-                </div>
-                <div class="col-12">
-                  <button type="submit" class="btn btn-warning" :disabled="changingPassword">
-                    <span v-if="changingPassword">
-                      <span class="spinner-border spinner-border-sm me-2"></span>
+                <div class="flex justify-end">
+                  <button type="submit" class="btn-modern btn-gradient-warning" :disabled="changingPassword">
+                    <span v-if="changingPassword" class="flex items-center">
+                      <div class="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
                       Mengubah...
                     </span>
-                    <span v-else>
-                      <i class="bi bi-key me-2"></i>
+                    <span v-else class="flex items-center">
+                      <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m-2-2l-2-2m2 2l-2 2m0 0v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6a2 2 0 012-2m8 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v.5M15 7H9"/>
+                      </svg>
                       Ubah Password
                     </span>
                   </button>
                 </div>
-              </div>
-            </form>
+              </form>
+            </div>
           </div>
-        </div>
 
-        <!-- Info -->
-        <div class="alert alert-info mt-3">
-          <i class="bi bi-info-circle me-2"></i>
-          <strong>Catatan:</strong> Untuk perubahan data akademik (Jurusan, Angkatan, Status), silakan hubungi admin program studi.
-        </div>
+          <!-- Info -->
+          <div class="bg-blue-50 border border-blue-200 text-blue-800 px-6 py-4 rounded-xl animate-fade-in-up">
+            <div class="flex items-center">
+              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              <div>
+                <strong>Catatan:</strong> Untuk perubahan data akademik (Jurusan, Angkatan, Status), silakan hubungi admin program studi.
+              </div>
+            </div>
+          </div>
       </div>
     </div>
   </div>
@@ -452,32 +475,3 @@ onMounted(() => {
 })
 </script>
 
-<style scoped>
-.avatar-large {
-  width: 100px;
-  height: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.card-header {
-  background-color: #f8f9fa !important;
-}
-
-label.text-muted {
-  font-size: 0.875rem;
-  font-weight: 500;
-}
-
-.form-label {
-  font-weight: 500;
-  color: #495057;
-  margin-bottom: 0.5rem;
-}
-
-.btn-outline-primary {
-  font-size: 0.875rem;
-  padding: 0.25rem 0.75rem;
-}
-</style>

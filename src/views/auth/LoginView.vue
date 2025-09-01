@@ -1,34 +1,36 @@
 <!-- src/views/auth/LoginView.vue -->
 <template>
-  <div class="login-container">
-    <div class="login-card">
-      <div class="text-center mb-4">
-        <i class="bi bi-mortarboard-fill text-primary" style="font-size: 3rem;"></i>
-        <h2 class="mt-3">Sistem Informasi Manajemen Mahasiswa</h2>
-        <p class="text-muted">Silakan login untuk melanjutkan</p>
-      </div>
-
-      <form @submit.prevent="handleLogin">
+  <div class="card-modern max-w-md mx-4 animate-fade-in-up">
+    <div class="p-8">
+      <form @submit.prevent="handleLogin" class="space-y-6">
         <!-- Alert for errors -->
-        <div v-if="error" class="alert alert-danger alert-dismissible fade show" role="alert">
-          {{ error }}
-          <button 
-            type="button" 
-            class="btn-close" 
-            @click="clearError"
-          ></button>
+        <div v-if="error" class="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-xl relative" role="alert">
+          <div class="flex items-center justify-between">
+            <span class="text-sm">{{ error }}</span>
+            <button 
+              type="button" 
+              class="text-red-400 hover:text-red-600"
+              @click="clearError"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+              </svg>
+            </button>
+          </div>
         </div>
 
         <!-- Username -->
-        <div class="mb-3">
-          <label for="username" class="form-label">Username</label>
-          <div class="input-group">
-            <span class="input-group-text">
-              <i class="bi bi-person"></i>
-            </span>
+        <div>
+          <label for="username" class="block text-sm font-semibold text-gray-700 mb-3">Username</label>
+          <div class="relative">
+            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+              <svg class="h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
+              </svg>
+            </div>
             <input
               type="text"
-              class="form-control"
+              class="input-modern pl-12"
               id="username"
               v-model="credentials.username"
               placeholder="Masukkan username"
@@ -39,15 +41,17 @@
         </div>
 
         <!-- Password -->
-        <div class="mb-3">
-          <label for="password" class="form-label">Password</label>
-          <div class="input-group">
-            <span class="input-group-text">
-              <i class="bi bi-lock"></i>
-            </span>
+        <div>
+          <label for="password" class="block text-sm font-semibold text-gray-700 mb-3">Password</label>
+          <div class="relative">
+            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+              <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+              </svg>
+            </div>
             <input
               :type="showPassword ? 'text' : 'password'"
-              class="form-control"
+              class="input-modern pl-12 pr-12"
               id="password"
               v-model="credentials.password"
               placeholder="Masukkan password"
@@ -55,26 +59,32 @@
               :disabled="loading"
             >
             <button 
-              class="btn btn-outline-secondary" 
+              class="absolute inset-y-0 right-0 pr-4 flex items-center" 
               type="button"
               @click="showPassword = !showPassword"
               :disabled="loading"
             >
-              <i :class="showPassword ? 'bi bi-eye-slash' : 'bi bi-eye'"></i>
+              <svg v-if="!showPassword" class="h-5 w-5 text-gray-400 hover:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+              </svg>
+              <svg v-else class="h-5 w-5 text-gray-400 hover:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.878 9.878L3 3m6.878 6.878L17.121 17.121"/>
+              </svg>
             </button>
           </div>
         </div>
 
         <!-- Remember me -->
-        <div class="mb-3 form-check">
+        <div class="flex items-center">
           <input 
             type="checkbox" 
-            class="form-check-input" 
+            class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded" 
             id="rememberMe"
             v-model="rememberMe"
             :disabled="loading"
           >
-          <label class="form-check-label" for="rememberMe">
+          <label class="ml-2 block text-sm text-gray-900" for="rememberMe">
             Ingat saya
           </label>
         </div>
@@ -82,35 +92,40 @@
         <!-- Submit button -->
         <button 
           type="submit" 
-          class="btn btn-primary w-100"
+          class="btn-modern btn-gradient-primary w-full"
           :disabled="loading"
         >
-          <span v-if="loading">
-            <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+          <span v-if="loading" class="flex items-center justify-center">
+            <div class="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
             Loading...
           </span>
-          <span v-else>
-            <i class="bi bi-box-arrow-in-right me-2"></i>
+          <span v-else class="flex items-center justify-center">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"/>
+            </svg>
             Login
           </span>
         </button>
       </form>
 
       <!-- Demo credentials -->
-      <div class="mt-4 p-3 bg-light rounded">
-        <h6 class="text-center mb-3">Demo Credentials</h6>
-        <div class="row text-center small">
-          <div class="col-4">
-            <strong>Admin</strong><br>
-            admin / admin123
+      <div class="mt-8 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl border border-blue-100">
+        <h3 class="text-center text-sm font-semibold text-gray-800 mb-4">🔑 Demo Credentials</h3>
+        <div class="grid grid-cols-3 gap-4 text-center text-xs">
+          <div class="bg-white p-3 rounded-lg shadow-sm">
+            <p class="font-semibold text-blue-600">Admin</p>
+            <p class="text-gray-600 mt-1">admin</p>
+            <p class="text-gray-600">admin123</p>
           </div>
-          <div class="col-4">
-            <strong>Dosen</strong><br>
-            dosen01 / dosen123
+          <div class="bg-white p-3 rounded-lg shadow-sm">
+            <p class="font-semibold text-green-600">Dosen</p>
+            <p class="text-gray-600 mt-1">dosen01</p>
+            <p class="text-gray-600">dosen123</p>
           </div>
-          <div class="col-4">
-            <strong>Mahasiswa</strong><br>
-            20220001 / mhs123
+          <div class="bg-white p-3 rounded-lg shadow-sm">
+            <p class="font-semibold text-purple-600">Mahasiswa</p>
+            <p class="text-gray-600 mt-1">20220001</p>
+            <p class="text-gray-600">mhs123</p>
           </div>
         </div>
       </div>
@@ -120,10 +135,8 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import { useRouter } from 'vue-router'
 import { useAuthStore } from '@/stores/auth'
 
-const router = useRouter()
 const authStore = useAuthStore()
 
 // Form data
@@ -173,14 +186,6 @@ onMounted(() => {
   }
 })
 
-// Save username if remember me is checked
-const saveUsername = () => {
-  if (rememberMe.value) {
-    localStorage.setItem('savedUsername', credentials.value.username)
-  } else {
-    localStorage.removeItem('savedUsername')
-  }
-}
 </script>
 
 <style scoped>
