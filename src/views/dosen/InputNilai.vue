@@ -138,6 +138,7 @@
 import { ref, computed, onMounted } from 'vue'
 import { useMahasiswaStore } from '@/stores/mahasiswa'
 import NilaiForm from '@/components/nilai/NilaiForm.vue'
+import nilaiService from '@/services/nilaiService'
 
 const mahasiswaStore = useMahasiswaStore()
 
@@ -195,22 +196,19 @@ const handleSubmitNilai = async (nilaiData) => {
   saving.value = true
   
   try {
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500))
+    // Save nilai to backend
+    const result = await nilaiService.saveNilai(nilaiData)
     
-    // In real app, you would save to backend
-    console.log('Saving nilai:', nilaiData)
-    
-    // Update mahasiswa's IPK (in real app, this would be calculated on backend)
-    const ipSemester = parseFloat(nilaiData.nilai.reduce((sum, n) => sum + n.bobot, 0) / 
-                                 nilaiData.nilai.reduce((sum, n) => sum + n.sks, 0))
-    
-    // Show success modal
-    if (modalInstance) {
-      modalInstance.show()
+    if (result.success) {
+      // Show success modal
+      if (modalInstance) {
+        modalInstance.show()
+      } else {
+        alert('Nilai berhasil disimpan!')
+        resetForm()
+      }
     } else {
-      alert('Nilai berhasil disimpan!')
-      resetForm()
+      alert(result.message || 'Gagal menyimpan nilai')
     }
   } catch (error) {
     console.error('Error saving nilai:', error)
