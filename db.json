@@ -62,14 +62,14 @@
       "email": "ahmad.rizki@student.university.ac.id",
       "jurusan": "Teknik Informatika",
       "angkatan": "2022",
-      "status": "Non-Aktif",
+      "status": "Lulus",
       "ipk": 3.65,
       "alamat": "Jl. Sudirman No. 123, Jakarta",
       "telepon": "081234567891",
       "tanggalLahir": "2004-05-15",
       "jenisKelamin": "L",
       "createdAt": "2022-08-01T00:00:00.000Z",
-      "updatedAt": "2025-07-12T15:38:38.841Z"
+      "updatedAt": "2025-07-15T16:49:16.884Z"
     },
     {
       "id": 2,

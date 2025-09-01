@@ -187,6 +187,8 @@
 
 <script setup>
 import { ref, computed, onMounted, watch } from 'vue'
+import { useNilaiStore } from '@/stores/nilai'
+
 import { useAuthStore } from '@/stores/auth'
 import mahasiswaService from '@/services/mahasiswaService'
 import nilaiService from '@/services/nilaiService'
