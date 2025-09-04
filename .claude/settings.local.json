@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(/D:\\FERDINANDTOBING_KULIAH\\SEMESTER 4\\PEMROGRAMAN BERBASIS KOMPONEN\\akademik\\src\\views\\admin/**)",
+      "Read(/D:\\FERDINANDTOBING_KULIAH\\SEMESTER 4\\PEMROGRAMAN BERBASIS KOMPONEN\\akademik\\src/**)",
+      "Read(/D:\\FERDINANDTOBING_KULIAH\\SEMESTER 4\\PEMROGRAMAN BERBASIS KOMPONEN\\akademik\\src\\layouts/**)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
