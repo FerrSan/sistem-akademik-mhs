@@ -8,7 +8,8 @@ import AdminLayout from '@/layouts/AdminLayout.vue'
 import DosenLayout from '@/layouts/DosenLayout.vue'
 import MahasiswaLayout from '@/layouts/MahasiswaLayout.vue'
 
-// Auth Views
+// Landing & Auth Views
+import LandingView from '@/views/LandingView.vue'
 import LoginView from '@/views/auth/LoginView.vue'
 
 // Admin Views
@@ -31,6 +32,14 @@ import ProfilMahasiswa from '@/views/mahasiswa/ProfilMahasiswa.vue'
 import NilaiView from '@/views/mahasiswa/NilaiView.vue'
 
 const routes = [
+  // Landing Page Route
+  {
+    path: '/',
+    name: 'landing',
+    component: LandingView,
+    meta: { requiresAuth: false }
+  },
+  
   // Auth Routes
   {
     path: '/login',
@@ -162,17 +171,12 @@ const routes = [
     ]
   },
   
-  // Root redirect
-  {
-    path: '/',
-    redirect: '/login'
-  },
   
   // 404 Not Found
   {
     path: '/:pathMatch(.*)*',
     name: 'not-found',
-    redirect: '/login'
+    redirect: '/'
   }
 ]
 
@@ -230,8 +234,8 @@ router.beforeEach(async (to, from, next) => {
     }
   }
   
-  // If already logged in and trying to access login page
-  if (to.name === 'login' && isAuthenticated) {
+  // If already logged in and trying to access login page or landing page
+  if ((to.name === 'login' || to.name === 'landing') && isAuthenticated) {
     const roleRedirects = {
       admin: '/admin/dashboard',
       dosen: '/dosen/dashboard',
