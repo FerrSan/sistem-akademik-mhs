@@ -8,7 +8,9 @@
       "Read(/D:\\FERDINANDTOBING_KULIAH\\SEMESTER 4\\PEMROGRAMAN BERBASIS KOMPONEN\\akademik\\src/**)",
       "Read(/D:\\FERDINANDTOBING_KULIAH\\SEMESTER 4\\PEMROGRAMAN BERBASIS KOMPONEN\\akademik\\src\\assets\\css/**)",
       "Bash(npm run dev:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Read(/D:\\FERDINANDTOBING_KULIAH\\SEMESTER 4\\PEMROGRAMAN BERBASIS KOMPONEN\\akademik\\src\\services/**)",
+      "Read(/D:\\FERDINANDTOBING_KULIAH\\SEMESTER 4\\PEMROGRAMAN BERBASIS KOMPONEN\\akademik\\src\\services/**)"
     ],
     "deny": [],
     "ask": []

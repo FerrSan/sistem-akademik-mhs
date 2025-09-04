@@ -11,7 +11,10 @@
     "test:ui": "vitest --ui",
     "test:coverage": "vitest run --coverage",
     "json-server": "json-server --watch db.json --port 3001",
+    "json-server:production": "json-server --watch db.json --port 3001 --host 0.0.0.0",
+    "server": "node server.js",
     "start": "concurrently \"npm run json-server\" \"npm run dev\"",
+    "start:production": "npm run server",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
   },
   "dependencies": {
@@ -32,6 +35,7 @@
     "@vue/test-utils": "^2.4.6",
     "autoprefixer": "^10.4.21",
     "concurrently": "^8.2.2",
+    "cors": "^2.8.5",
     "eslint": "^8.57.0",
     "eslint-plugin-vue": "^9.26.0",
     "happy-dom": "^14.12.3",
