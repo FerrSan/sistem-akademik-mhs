@@ -293,7 +293,6 @@ const isActiveRoute = (routeName) => {
 const logout = () => {
   if (confirm('Apakah Anda yakin ingin keluar?')) {
     authStore.logout()
-    router.push('/login')
   }
 }
 
