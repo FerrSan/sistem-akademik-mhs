@@ -91,31 +91,81 @@
 
       <!-- Detail Modal -->
       <div 
-        class="fixed inset-0 z-50 overflow-y-auto hidden"
+        v-if="selectedMahasiswa"
+        class="fixed inset-0 z-50 overflow-y-auto animate-fade-in-up"
         id="detailModal" 
-        ref="detailModal"
       >
-        <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-          <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" @click="closeModal"></div>
-          <div class="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-4xl sm:w-full sm:p-6">
-            <div class="flex items-center justify-between mb-6">
-              <h3 class="text-2xl font-bold text-gray-900">🎓 Detail Mahasiswa</h3>
-              <button @click="closeModal" class="text-gray-400 hover:text-gray-600 transition-colors duration-200">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                </svg>
-              </button>
+        <div class="flex items-center justify-center min-h-screen p-4">
+          <!-- Backdrop -->
+          <div 
+            class="fixed inset-0 bg-black bg-opacity-50 transition-opacity" 
+            @click="closeModal"
+          ></div>
+          
+          <!-- Modal Content -->
+          <div class="relative bg-white rounded-2xl shadow-2xl max-w-6xl w-full max-h-[90vh] overflow-hidden">
+            <!-- Modal Header -->
+            <div class="bg-gradient-to-r from-blue-500 to-purple-600 p-6">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                  <div class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 class="text-2xl font-bold text-white">🎓 Detail Mahasiswa</h3>
+                    <p class="text-blue-100 mt-1">Informasi lengkap data mahasiswa</p>
+                  </div>
+                </div>
+                <button 
+                  @click="closeModal" 
+                  class="p-2 text-white hover:bg-white hover:bg-opacity-20 rounded-lg transition-all duration-200"
+                >
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                  </svg>
+                </button>
+              </div>
             </div>
-            <div v-if="selectedMahasiswa">
+            
+            <!-- Modal Body -->
+            <div class="p-6 overflow-y-auto max-h-[70vh]">
               <MahasiswaDetail 
                 :mahasiswa="selectedMahasiswa"
                 :showActions="false"
+                :showChart="true"
               />
             </div>
-            <div class="flex justify-end mt-6">
-              <button @click="closeModal" class="btn-modern btn-outline">
-                Tutup
-              </button>
+            
+            <!-- Modal Footer -->
+            <div class="bg-gray-50 px-6 py-4 border-t border-gray-200">
+              <div class="flex justify-between items-center">
+                <div class="text-sm text-gray-500">
+                  Data terakhir diperbarui: {{ formatDateTime(selectedMahasiswa?.updatedAt) }}
+                </div>
+                <div class="flex space-x-3">
+                  <button 
+                    @click="closeModal" 
+                    class="btn-modern bg-gray-100 text-gray-700 hover:bg-gray-200"
+                  >
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                    Tutup
+                  </button>
+                  <router-link 
+                    :to="`/dosen/input-nilai?nim=${selectedMahasiswa?.nim}`" 
+                    class="btn-modern btn-gradient-primary"
+                    @click="closeModal"
+                  >
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+                    </svg>
+                    Input Nilai
+                  </router-link>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -160,12 +210,21 @@ const clearFilters = () => {
 
 const viewDetail = (mahasiswa) => {
   selectedMahasiswa.value = mahasiswa
-  document.getElementById('detailModal').classList.remove('hidden')
 }
 
 const closeModal = () => {
-  document.getElementById('detailModal').classList.add('hidden')
   selectedMahasiswa.value = null
+}
+
+const formatDateTime = (date) => {
+  if (!date) return '-'
+  return new Date(date).toLocaleString('id-ID', {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit'
+  })
 }
 
 const exportData = () => {
