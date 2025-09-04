@@ -3,7 +3,12 @@
     "allow": [
       "Bash(npm install:*)",
       "Bash(npm run lint)",
-      "Bash(npm run build:*)"
+      "Bash(npm run build:*)",
+      "Read(/D:\\FERDINANDTOBING_KULIAH\\SEMESTER 4\\PEMROGRAMAN BERBASIS KOMPONEN\\akademik\\src\\layouts/**)",
+      "Read(/D:\\FERDINANDTOBING_KULIAH\\SEMESTER 4\\PEMROGRAMAN BERBASIS KOMPONEN\\akademik\\src/**)",
+      "Read(/D:\\FERDINANDTOBING_KULIAH\\SEMESTER 4\\PEMROGRAMAN BERBASIS KOMPONEN\\akademik\\src\\assets\\css/**)",
+      "Bash(npm run dev:*)",
+      "Bash(git add:*)"
     ],
     "deny": [],
     "ask": []

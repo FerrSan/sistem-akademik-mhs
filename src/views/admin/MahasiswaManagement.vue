@@ -315,7 +315,7 @@
                 </div>
               </div>
             </div>
-            <div class="mt-6 bg-gray-50 p-4 rounded-lg">
+            <div v-if="selectedMahasiswa" class="mt-6 bg-gray-50 p-4 rounded-lg">
               <h4 class="text-sm font-semibold text-gray-600 uppercase tracking-wide mb-3">Alamat</h4>
               <p class="text-sm text-gray-900">{{ selectedMahasiswa.alamat || 'Alamat belum diisi' }}</p>
             </div>
