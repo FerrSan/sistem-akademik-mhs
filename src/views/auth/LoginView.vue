@@ -108,7 +108,7 @@
         </button>
       </form>
 
-      <!-- Demo credentials
+      Demo credentials
       <div class="mt-8 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl border border-blue-100">
         <h3 class="text-center text-sm font-semibold text-gray-800 mb-4">🔑 Demo Credentials</h3>
         <div class="grid grid-cols-3 gap-4 text-center text-xs">
@@ -128,7 +128,7 @@
             <p class="text-gray-600">mhs123</p>
           </div>
         </div>
-      </div> -->
+      </div>
     </div>
   </div>
 </template>
